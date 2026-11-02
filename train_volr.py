@@ -36,7 +36,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
     scene = Scene(dataset, gaussians)
     gaussians.training_setup(opt)
     if checkpoint and os.path.exists(checkpoint):
-        (model_params, first_iter) = torch.load(checkpoint)
+        (model_params, first_iter) = torch.load(checkpoint, weights_only=True)
         gaussians.restore(model_params, opt)
     gaussians.reparam_type = args.reparam_type
     gaussians.setup_functions()
